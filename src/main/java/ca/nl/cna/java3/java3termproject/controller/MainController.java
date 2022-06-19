@@ -163,7 +163,7 @@ public class MainController {
 
 
         Skills skill = new Skills();
-        //skill.setId(id);
+        skill.setId(id);
         skill.setName(name);
         skill.setType(type);
         skillsRepository.save(skill);
