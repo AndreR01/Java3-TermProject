@@ -1,9 +1,6 @@
 package ca.nl.cna.java3.java3termproject.controller;
 
-import ca.nl.cna.java3.java3termproject.dao.Education;
-import ca.nl.cna.java3.java3termproject.dao.EducationRepository;
-import ca.nl.cna.java3.java3termproject.dao.Experience;
-import ca.nl.cna.java3.java3termproject.dao.ExperienceRepository;
+import ca.nl.cna.java3.java3termproject.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +9,11 @@ import java.util.Optional;
 
 /**
  * THe main controller for the course project
- * <p>
- * This will handel request for Education now.
- * <p>
- * TO// Consider using 3 different controllers
+ *
+ * This will handle request for Education now.
+ *
  */
+ //TODO Consider using 3 different controllers
 @RestController
 @RequestMapping(path = "/api")
 public class MainController {
@@ -25,6 +22,7 @@ public class MainController {
     public static final String VERSION_1 = "/v1";
     public static final String EDUCATION = "/educations";
     public static final String EXPERIENCE = "/experience";
+    public static final String SKILLS = "/skills";
 
     //Education
     @Autowired // This links this to the database
@@ -98,13 +96,15 @@ public class MainController {
     }
 
     /**
+     * Add a new experience to the resume
+     *
      * @param id
      * @param startDate
      * @param endDate
      * @param jobTitle
      * @param company
      * @param description
-     * @return
+     * @return Skill saved
      */
     @PostMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
@@ -121,7 +121,7 @@ public class MainController {
         experience.setCompany(company   );
         experience.setDescription(description);
         experienceRepository.save(experience);
-        return "Saved";
+        return "Experience saved";
     }
 
 
@@ -129,10 +129,55 @@ public class MainController {
     public @ResponseBody
     String deleteExperience(@RequestParam Integer id) {
         experienceRepository.deleteById(id);
-        return "deleted";
+        return "Experience deleted";
     }
 
     //Skills
+    @Autowired // This links this to the database
+    private SkillsRepository skillsRepository;
+
+    @GetMapping(path = VERSION_1 + SKILLS)
+    public @ResponseBody
+    Iterable<Skills> getAllSkills() {
+        return skillsRepository.findAll();
+    }
+
+    @GetMapping(path = VERSION_1 + SKILLS + "/{id}")
+    public @ResponseBody
+    Optional<Skills> getSkillsWithID(@PathVariable Integer id) {
+        return skillsRepository.findById(id);
+    }
+
+    /**
+     * Add a new skill to the resume
+     * S
+     * @param id
+     * @param name
+     * @param type
+     * @return
+     */
+    @PostMapping(path = VERSION_1 + SKILLS)
+    public @ResponseBody
+    String addNewSkill(@RequestParam Integer id, @RequestParam String name,
+                           @RequestParam String type) {
+
+
+        Skills skill = new Skills();
+        //skill.setId(id);
+        skill.setName(name);
+        skill.setType(type);
+        skillsRepository.save(skill);
+        return "Skill saved";
+    }
+
+    @DeleteMapping(path = VERSION_1 + SKILLS)
+    public @ResponseBody
+    String deleteSkill(@RequestParam Integer id) {
+        skillsRepository.deleteById(id);
+        return "Skill deleted";
+    }
+
+
 
 
 }
