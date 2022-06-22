@@ -3,9 +3,12 @@ package ca.nl.cna.java3.java3termproject.dao;
 import ca.nl.cna.java3.java3termproject.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -45,9 +48,9 @@ public class MainController {
      *
      * @param title
      * @param institutionName
-     * @param gradYear
-     * @param startDate
-     * @param endDate
+     * @param gradYear yyyy-MM_dd
+     * @param startDate yyyy-MM_dd
+     * @param endDate yyyy-MM_dd
      * @param abbreviation
      * @return Education saved
      */
@@ -79,9 +82,9 @@ public class MainController {
      *
      * @param title
      * @param institutionName
-     * @param gradYear
-     * @param startDate
-     * @param endDate
+     * @param gradYear yyyy-MM_dd
+     * @param startDate yyyy-MM_dd
+     * @param endDate yyyy-MM_dd
      * @param abbreviation
      * @return Education saved
      */
@@ -137,8 +140,8 @@ public class MainController {
     /**
      * Add a new experience to the resume
      *
-     * @param startDate
-     * @param endDate
+     * @param startDate yyyy-MM_dd
+     * @param endDate yyyy-MM_dd
      * @param jobTitle
      * @param company
      * @param description
@@ -169,8 +172,8 @@ public class MainController {
     /**
      * Update experience in the resume
      *
-     * @param startDate
-     * @param endDate
+     * @param startDate yyyy-MM_dd
+     * @param endDate yyyy-MM_dd
      * @param jobTitle
      * @param company
      * @param description
