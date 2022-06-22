@@ -12,8 +12,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 /**
- * Simple class to represent a student's education. This clas
- * represents a single diploma, certificat or degree. Students
+ * Simple class to represent a student's education. This class
+ * represents a single diploma, certificate or degree. Students
  * may have many of these
  *
  * Education has the following attributes:
@@ -34,6 +34,7 @@ public class Education {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Integer id;
 
     private String title;
