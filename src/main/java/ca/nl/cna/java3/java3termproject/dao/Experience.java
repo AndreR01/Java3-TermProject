@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 /**
+ * Java 3 CP3566 Spring 2022
+ *
  * Simple class to represent a student's experience. This class
  * represents a single instance. Students may have many of these
  *
@@ -41,50 +43,110 @@ public class Experience {
     private String company;
     private String description;
 
+    /**
+     * Get id for an Experience object.
+     *
+     * @return id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Set id for an Experience object.
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * Get a start date for an Experience object.
+     *
+     * @return startDate
+     */
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    /**
+     * Set a start date for an Experience object.
+     *
+     * @param startDate
+     */
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * Get an end date for an Experience object.
+     *
+     * @return endDate
+     */
     public LocalDate getEndDate() {
         return endDate;
     }
 
+    /**
+     * Set an end date for an Experience object.
+     *
+     * @param endDate
+     */
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
+    /**
+     * Get a job title for an Experience object.
+     *
+     * @return jobTitle
+     */
     public String getJobTitle() {
         return jobTitle;
     }
 
+    /**
+     * Set a job title for an Experience object.
+     *
+     * @param jobTitle
+     */
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
+    /**
+     * Get a company for an Experience object.
+     *
+     * @return company
+     */
     public String getCompany() {
         return company;
     }
 
+    /**
+     * Set a company for an Experience object.
+     *
+     * @param company
+     */
     public void setCompany(String company) {
         this.company = company;
     }
 
+    /**
+     * Get a description for an Experience object.
+     *
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Set a description for an Experience object.
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }

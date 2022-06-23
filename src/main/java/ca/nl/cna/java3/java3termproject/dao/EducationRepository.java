@@ -8,9 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * Education repository that extends CrudRepository.
  *
- *
- *
- *
+ * @author Andre
  */
 public interface EducationRepository extends CrudRepository<Education, Integer> {
 
