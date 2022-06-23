@@ -46,6 +46,7 @@ public class MainController {
     @GetMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
     Iterable<Education> getAllEducation() {
+        String name = "Test";
         return educationRepository.findAll();
     }
 
@@ -58,6 +59,7 @@ public class MainController {
     @GetMapping(path = VERSION_1 + EDUCATION + "/{id}")
     public @ResponseBody
     Optional<Education> getEductionWithID(@PathVariable Integer id) {
+        String name = "Test";
         return educationRepository.findById(id);
     }
 
@@ -124,7 +126,7 @@ public class MainController {
         } else {
             addNewEducation(title, institutionName, gradYear, startDate, endDate, abbreviation);
             //TODO if we add a new row. The return fail is redundant?
-            return "Fail - no education to update";
+            return "Education did not exist. Added as a new Education";
         }
     }
 
@@ -141,6 +143,8 @@ public class MainController {
         return "Education deleted";
     }
 
+
+
     //Experience
     /**
      * Enables automatic dependency injection for Experience.
@@ -156,6 +160,7 @@ public class MainController {
     @GetMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
     Iterable<Experience> getAllExperience() {
+        String name = "Test";
         return experienceRepository.findAll();
     }
 
@@ -168,6 +173,7 @@ public class MainController {
     @GetMapping(path = VERSION_1 + EXPERIENCE + "/{id}")
     public @ResponseBody
     Optional<Experience> getExperienceWithID(@PathVariable Integer id) {
+        String name = "Test";
         return experienceRepository.findById(id);
     }
 
@@ -197,7 +203,6 @@ public class MainController {
         experienceRepository.save(experience);
         return "Experience saved";
     }
-
 
     /**
      * HTTP PUT request for an updated Education entry.
@@ -229,10 +234,9 @@ public class MainController {
         } else {
             addNewExperience(startDate, endDate, jobTitle, company, description);
             //TODO if we add a new row. The return fail is redundant?
-            return "Fail - no experience to update";
+            return "Experience did not exist. Added as a new Experience";
         }
     }
-
 
     /**
      * HTTP DELETE request to delete an Experience entry by id.
@@ -246,6 +250,8 @@ public class MainController {
         experienceRepository.deleteById(id);
         return "Experience deleted";
     }
+
+
 
     //Skills
     /**
@@ -262,6 +268,7 @@ public class MainController {
     @GetMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
     Iterable<Skills> getAllSkills() {
+        String name = "Test";
         return skillsRepository.findAll();
     }
 
@@ -274,11 +281,12 @@ public class MainController {
     @GetMapping(path = VERSION_1 + SKILLS + "/{id}")
     public @ResponseBody
     Optional<Skills> getSkillsWithID(@PathVariable Integer id) {
+        String name = "Test";
         return skillsRepository.findById(id);
     }
 
     /**
-     * HTTP POST request for a new Experience entry.
+     * HTTP POST request for a new Skill entry.
      *
      * @param name
      * @param type
@@ -320,7 +328,7 @@ public class MainController {
         } else {
             addNewSkill(name, type);
             //TODO if we add a new row. The return fail is redundant?
-            return "Fail - no education to update";
+            return "Skill did not exist. Added as a new Skill";
         }
     }
 

@@ -37,6 +37,7 @@ class SkillBlock extends React.Component {
             return <div>No Skills</div>
         }
         const skills = this.state.items.map(item => <SkillItem key={item.id} data={item} />);
+        console.log(skills);
         return (
             <div>{skills}</div>
         );

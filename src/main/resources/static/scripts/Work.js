@@ -8,7 +8,7 @@ function WorkItem(props){
                 <div className="h5">{props.data.jobTitle} <span className="text-muted h6">at {props.data.company}</span></div>
                 </div>
                 <div className="timeline-body px-4 pb-4">
-                <div className="text-muted text-small mb-3">{props.data.startDate} - {props.data.endDate}</div>
+                <div className="text-muted text-small mb-3">Start Date: {props.data.startDate} - End Date: {props.data.endDate}</div>
                 <div>{props.data.description}</div>
             </div>
         </div>
