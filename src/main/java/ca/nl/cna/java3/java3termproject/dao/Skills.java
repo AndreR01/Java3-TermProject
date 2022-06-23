@@ -22,7 +22,7 @@ import javax.persistence.Id;
  *
  * @author Andre
  */
-@Entity
+@Entity(name = "skill")
 public class Skills {
 
     @Id

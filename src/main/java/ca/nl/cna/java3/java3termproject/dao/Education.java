@@ -29,7 +29,7 @@ import java.util.Optional;
  *
  * @author Andre
  */
-@Entity
+@Entity(name = "education")
 public class Education {
 
     @Id

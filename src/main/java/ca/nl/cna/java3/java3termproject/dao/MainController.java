@@ -1,14 +1,13 @@
 package ca.nl.cna.java3.java3termproject.dao;
 
+
 import ca.nl.cna.java3.java3termproject.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.registry.LocateRegistry;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -22,6 +21,7 @@ import java.util.Optional;
 public class MainController {
 
     //Constant used in REST API definition
+    public static final String API_ROOT_PATH = "/api";
     public static final String VERSION_1 = "/v1";
     public static final String EDUCATION = "/educations";
     public static final String EXPERIENCE = "/experience";
@@ -48,15 +48,14 @@ public class MainController {
      *
      * @param title
      * @param institutionName
-     * @param gradYear yyyy-MM_dd
-     * @param startDate yyyy-MM_dd
-     * @param endDate yyyy-MM_dd
+     * @param gradYear
+     * @param startDate
+     * @param endDate
      * @param abbreviation
      * @return Education saved
      */
     @PostMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String addNewEducation(@RequestParam String title,
                            @RequestParam String institutionName, @RequestParam Integer gradYear,
                            @RequestParam LocalDate startDate, @RequestParam LocalDate endDate,
@@ -74,23 +73,22 @@ public class MainController {
         return "Education saved";
     }
 
-    //TODO Correct code for PUTMapping
-    // Pass in the id
+//    TODO Correct code for PUTMapping
+//     Pass in the id
 
     /**
      * Update education to the resume
      *
      * @param title
      * @param institutionName
-     * @param gradYear yyyy-MM_dd
-     * @param startDate yyyy-MM_dd
-     * @param endDate yyyy-MM_dd
+     * @param gradYear
+     * @param startDate
+     * @param endDate
      * @param abbreviation
      * @return Education saved
      */
     @PutMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String updateEducation(@RequestParam Integer id, @RequestParam String title,
                            @RequestParam String institutionName, @RequestParam Integer gradYear,
                            @RequestParam LocalDate startDate, @RequestParam LocalDate endDate,
@@ -140,8 +138,8 @@ public class MainController {
     /**
      * Add a new experience to the resume
      *
-     * @param startDate yyyy-MM_dd
-     * @param endDate yyyy-MM_dd
+     * @param startDate
+     * @param endDate
      * @param jobTitle
      * @param company
      * @param description
@@ -149,7 +147,6 @@ public class MainController {
      */
     @PostMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String addNewExperience(@RequestParam LocalDate startDate,
                             @RequestParam LocalDate endDate, @RequestParam String jobTitle,
                             @RequestParam String company, @RequestParam String description) {
@@ -172,8 +169,8 @@ public class MainController {
     /**
      * Update experience in the resume
      *
-     * @param startDate yyyy-MM_dd
-     * @param endDate yyyy-MM_dd
+     * @param startDate
+     * @param endDate
      * @param jobTitle
      * @param company
      * @param description
@@ -181,7 +178,6 @@ public class MainController {
      */
     @PutMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String updateExperience(@RequestParam Integer id, @RequestParam LocalDate startDate,
                             @RequestParam LocalDate endDate, @RequestParam String jobTitle,
                             @RequestParam String company, @RequestParam String description) {
@@ -236,7 +232,6 @@ public class MainController {
      */
     @PostMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String addNewSkill(@RequestParam String name,
                        @RequestParam String type) {
 
@@ -260,7 +255,6 @@ public class MainController {
      */
     @PutMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
-    //TODO remove id as it auto generates
     String updateSkill(@RequestParam Integer id, @RequestParam String name,
                        @RequestParam String type) {
 
