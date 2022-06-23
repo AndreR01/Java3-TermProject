@@ -2,7 +2,7 @@
 
 const e = React.createElement;
 function SkillItem(props){
-    var splits = props.data.type.split('-');
+    const splits = props.data.type.split('-');
     return (
         <div className="mb-3"><span className="fw-bolder">{props.data.name}</span>
             <div className="progress my-2 rounded" style={{height: "20px"}}>
