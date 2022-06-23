@@ -11,16 +11,20 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 /**
- * THe main controller for the course project
- * <p>
- * This will handle request for Education, Experience and Skills.
+ * Java 3 CP3566 Spring 2022
+ *
+ * The main controller for the course project
+ *
+ * This will handle GET, POST, PUT & DELETE requests for Education, Experience and Skills.
+ *
+ * @author Andre
  */
 //TODO Consider using 3 different controllers
 @RestController
 @RequestMapping(path = "/api")
 public class MainController {
 
-    //Constant used in REST API definition
+    //Constants used in REST API definition
     public static final String API_ROOT_PATH = "/api";
     public static final String VERSION_1 = "/v1";
     public static final String EDUCATION = "/educations";
@@ -28,15 +32,29 @@ public class MainController {
     public static final String SKILLS = "/skills";
 
     //Education
+    /**
+     * Enables automatic dependency injection for Education.
+     */
     @Autowired // This links this to the database
     private EducationRepository educationRepository;
 
+    /**
+     * HTTP GET request for all Education.
+     *
+     * @return educationRepository.findAll()
+     */
     @GetMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
     Iterable<Education> getAllEducation() {
         return educationRepository.findAll();
     }
 
+    /**
+     * HTTP GET request for Education by entered id.
+     *
+     * @param id
+     * @return educationRepository.findById(id)
+     */
     @GetMapping(path = VERSION_1 + EDUCATION + "/{id}")
     public @ResponseBody
     Optional<Education> getEductionWithID(@PathVariable Integer id) {
@@ -44,7 +62,7 @@ public class MainController {
     }
 
     /**
-     * Add a new education to the resume
+     * HTTP POST request for a new Education entry.
      *
      * @param title
      * @param institutionName
@@ -73,11 +91,8 @@ public class MainController {
         return "Education saved";
     }
 
-//    TODO Correct code for PUTMapping
-//     Pass in the id
-
     /**
-     * Update education to the resume
+     * HTTP PUT request for an updated Education entry.
      *
      * @param title
      * @param institutionName
@@ -85,7 +100,7 @@ public class MainController {
      * @param startDate
      * @param endDate
      * @param abbreviation
-     * @return Education saved
+     * @return Education updated OR Fail - no experience to update
      */
     @PutMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
@@ -108,10 +123,17 @@ public class MainController {
             return "Education updated";
         } else {
             addNewEducation(title, institutionName, gradYear, startDate, endDate, abbreviation);
+            //TODO if we add a new row. The return fail is redundant?
             return "Fail - no education to update";
         }
     }
 
+    /**
+     * HTTP DELETE request to delete an Education entry by id.
+     *
+     * @param id
+     * @return Education deleted
+     */
     @DeleteMapping(path = VERSION_1 + EDUCATION)
     public @ResponseBody
     String deleteEducation(@RequestParam Integer id) {
@@ -120,15 +142,29 @@ public class MainController {
     }
 
     //Experience
+    /**
+     * Enables automatic dependency injection for Experience.
+     */
     @Autowired // This links this to the database
     private ExperienceRepository experienceRepository;
 
+    /**
+     * HTTP GET request for all Experience.
+     *
+     * @return experienceRepository.finaAll()
+     */
     @GetMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
     Iterable<Experience> getAllExperience() {
         return experienceRepository.findAll();
     }
 
+    /**
+     * HTTP GET request for Experience entered by id.
+     *
+     * @param id
+     * @return experienceRepository.findById(id)
+     */
     @GetMapping(path = VERSION_1 + EXPERIENCE + "/{id}")
     public @ResponseBody
     Optional<Experience> getExperienceWithID(@PathVariable Integer id) {
@@ -136,14 +172,14 @@ public class MainController {
     }
 
     /**
-     * Add a new experience to the resume
+     * HTTP POST request for a new Experience entry.
      *
      * @param startDate
      * @param endDate
      * @param jobTitle
      * @param company
      * @param description
-     * @return Skill saved
+     * @return Experience saved
      */
     @PostMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
@@ -163,18 +199,15 @@ public class MainController {
     }
 
 
-    //TODO Correct code for PUTMapping
-    // Pass in the id
-
     /**
-     * Update experience in the resume
+     * HTTP PUT request for an updated Education entry.
      *
      * @param startDate
      * @param endDate
      * @param jobTitle
      * @param company
      * @param description
-     * @return Skill saved
+     * @return Experience updated OR Fail - no experience to update
      */
     @PutMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
@@ -195,11 +228,18 @@ public class MainController {
             return "Experience updated";
         } else {
             addNewExperience(startDate, endDate, jobTitle, company, description);
+            //TODO if we add a new row. The return fail is redundant?
             return "Fail - no experience to update";
         }
     }
 
 
+    /**
+     * HTTP DELETE request to delete an Experience entry by id.
+     *
+     * @param id
+     * @return Experience deleted
+     */
     @DeleteMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
     String deleteExperience(@RequestParam Integer id) {
@@ -208,15 +248,29 @@ public class MainController {
     }
 
     //Skills
+    /**
+     * Enables automatic dependency injection for Skills.
+     */
     @Autowired // This links this to the database
     private SkillsRepository skillsRepository;
 
+    /**
+     * HTTP GET request for all Skills.
+     *
+     * @return skillsRepository.findAll()
+     */
     @GetMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
     Iterable<Skills> getAllSkills() {
         return skillsRepository.findAll();
     }
 
+    /**
+     * HTTP GET request for Skills entered by id.
+     *
+     * @param id
+     * @return skillRepository.findById(id)
+     */
     @GetMapping(path = VERSION_1 + SKILLS + "/{id}")
     public @ResponseBody
     Optional<Skills> getSkillsWithID(@PathVariable Integer id) {
@@ -224,11 +278,11 @@ public class MainController {
     }
 
     /**
-     * Add a new skill to the resume
+     * HTTP POST request for a new Experience entry.
      *
      * @param name
      * @param type
-     * @return
+     * @return Skill saved
      */
     @PostMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
@@ -243,15 +297,12 @@ public class MainController {
         return "Skill saved";
     }
 
-    //TODO Correct code for PUTMapping
-    // Pass in the id
-
     /**
-     * Upaate a skill in the resume
+     * HTTP PUT request for an updated Skills entry.
      *
      * @param name
      * @param type
-     * @return
+     * @return Skills updated
      */
     @PutMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
@@ -268,10 +319,17 @@ public class MainController {
             return "Skill updated";
         } else {
             addNewSkill(name, type);
+            //TODO if we add a new row. The return fail is redundant?
             return "Fail - no education to update";
         }
     }
 
+    /**
+     * HTTP DELETE request to delete a Skills entry by id.
+     *
+     * @param id
+     * @return Skill deleted
+     */
     @DeleteMapping(path = VERSION_1 + SKILLS)
     public @ResponseBody
     String deleteSkill(@RequestParam Integer id) {
