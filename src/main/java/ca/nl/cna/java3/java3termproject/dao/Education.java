@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 /**
+ * Java 3 CP3566 Spring 2022
+ *
  * Simple class to represent a student's education. This class
  * represents a single diploma, certificate or degree. Students
  * may have many of these
@@ -50,58 +52,129 @@ public class Education {
     private String abbreviation;
 
 
+    /**
+     * Get id for Education object.
+     *
+     * @return id
+     */
     public Integer getId() {
         return id;
     }
 
+
+    /**
+     * Set id for Education object.
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * Get title for  Education object.
+     *
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Set title for Education object.
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Get institution name for Education object.
+     *
+     * @return institutionName
+     */
     public String getInstitutionName() {
         return institutionName;
     }
 
+    /**
+     * Set institution name for Education object.
+     *
+     * @param institutionName
+     */
     public void setInstitutionName(String institutionName) {
         this.institutionName = institutionName;
     }
 
+    /**
+     * Get graduation year for Education object.
+     *
+     * @return gradYear
+     */
     public Integer getGradYear() {
         return gradYear;
     }
 
+    /**
+     * Set gradution year for Education object.
+     *
+     * @param gradYear
+     */
     public void setGradYear(Integer gradYear) {
         this.gradYear = gradYear;
     }
 
+    /**
+     * Get start date for Education object.
+     *
+     * @return startDate
+     */
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    /**
+     * Set start date for Education object.
+     *
+     * @param startDate
+     */
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * Get end date for Education object.
+     *
+     * @return endDate
+     */
     public LocalDate getEndDate() {
         return endDate;
     }
 
+    /**
+     * Set end date for Education object.
+     *
+     * @param endDate
+     */
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
+    /**
+     * Get abbreviation for Education object.
+     *
+     * @return abbreviation
+     */
     public String getAbbreviation() {
         return abbreviation;
     }
 
+    /**
+     * Set abbreviation for Education object.
+     *
+     * @param abbreviation
+     */
     public void setAbbreviation(String abbreviation) {
         this.abbreviation = abbreviation;
     }
