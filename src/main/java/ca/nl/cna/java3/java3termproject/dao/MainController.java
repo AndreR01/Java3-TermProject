@@ -107,7 +107,7 @@ public class MainController {
             educationRepository.save(education);
             return "Education updated";
         } else {
-            //TODO Create a new eduction
+            addNewEducation(title, institutionName, gradYear, startDate, endDate, abbreviation);
             return "Fail - no education to update";
         }
     }
@@ -194,7 +194,7 @@ public class MainController {
             experienceRepository.save(experience);
             return "Experience updated";
         } else {
-            //TODO Create a new experience?
+            addNewExperience(startDate, endDate, jobTitle, company, description);
             return "Fail - no experience to update";
         }
     }
@@ -267,7 +267,7 @@ public class MainController {
             skillsRepository.save(skill);
             return "Skill updated";
         } else {
-            //TODO Create a new skill?
+            addNewSkill(name, type);
             return "Fail - no education to update";
         }
     }
