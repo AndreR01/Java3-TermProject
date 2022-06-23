@@ -41,10 +41,10 @@ public class Education {
     private String institutionName;
     private Integer gradYear;
 
-    @JsonFormat(pattern="yyyy-MM-dd") //yyyy-MM_dd
+    @JsonFormat(pattern="yyyy-MM-dd") //yyyy-MM-dd
     private LocalDate startDate;
 
-    @JsonFormat(pattern="yyyy-MM-dd") //yyyy-MM_dd
+    @JsonFormat(pattern="yyyy-MM-dd") //yyyy-MM-dd
     private LocalDate endDate;
 
     private String abbreviation;
