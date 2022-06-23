@@ -78,7 +78,8 @@ public class MainController {
     public @ResponseBody
     String addNewEducation(@RequestParam String title,
                            @RequestParam String institutionName, @RequestParam Integer gradYear,
-                           @RequestParam LocalDate startDate, @RequestParam LocalDate endDate,
+                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
                            @RequestParam String abbreviation) {
 
 
@@ -108,7 +109,8 @@ public class MainController {
     public @ResponseBody
     String updateEducation(@RequestParam Integer id, @RequestParam String title,
                            @RequestParam String institutionName, @RequestParam Integer gradYear,
-                           @RequestParam LocalDate startDate, @RequestParam LocalDate endDate,
+                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                           @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
                            @RequestParam String abbreviation) {
 
         Optional<Education> optionalEducation = educationRepository.findById(id);
@@ -189,8 +191,8 @@ public class MainController {
      */
     @PostMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
-    String addNewExperience(@RequestParam LocalDate startDate,
-                            @RequestParam LocalDate endDate, @RequestParam String jobTitle,
+    String addNewExperience(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate, @RequestParam String jobTitle,
                             @RequestParam String company, @RequestParam String description) {
 
 
@@ -216,8 +218,10 @@ public class MainController {
      */
     @PutMapping(path = VERSION_1 + EXPERIENCE)
     public @ResponseBody
-    String updateExperience(@RequestParam Integer id, @RequestParam LocalDate startDate,
-                            @RequestParam LocalDate endDate, @RequestParam String jobTitle,
+    String updateExperience(@RequestParam Integer id,
+                            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+                            @RequestParam String jobTitle,
                             @RequestParam String company, @RequestParam String description) {
 
         Optional<Experience> optionalExperience = experienceRepository.findById(id);
@@ -328,7 +332,7 @@ public class MainController {
         } else {
             addNewSkill(name, type);
             //TODO if we add a new row. The return fail is redundant?
-            return "Skill did not exist. Added as a new Skill";
+            return "Skill did not exist. Added as a new skill";
         }
     }
 
